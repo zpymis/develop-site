@@ -1,0 +1,1064 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+
+    <!-- SEO básico -->
+    <title>Develop. | Agencia de desarrollo web y diseño UX - Missael Rangel</title>
+    <meta name="description"
+        content="Landing page ligera y accesible con menú off-canvas, navbar sticky y dark mode. Desarrollada por Missael Rangel con HTML semántico, BEM CSS y JS modular." />
+    <link rel="canonical" href="https://develop.missaelr.com/" />
+
+    <!-- Theme color (mejora BP / PWA) -->
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#212121" media="(prefers-color-scheme: dark)">
+
+    <!-- Open Graph / Twitter -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Develop. | Agencia de desarrollo web y diseño UX" />
+    <meta property="og:description"
+        content="Sitios web rápidos, accesibles y medibles. Menú mobile accesible con focus-trap, dark mode persistente y Core Web Vitals optimizados." />
+    <meta property="og:url" content="https://develop.missaelr.com/" />
+    <meta property="og:image" content="assets/img/github.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- Fuentes locales -->
+    <link rel="preload" href="./assets/fonts/dmsans/DMSans-Regular.ttf" as="font" type="font/ttf" crossorigin>
+    <link rel="preload" href="./assets/fonts/dmsans/DMSans-Medium.ttf" as="font" type="font/ttf" crossorigin>
+    <link rel="preload" href="./assets/fonts/dmsans/DMSans-Bold.ttf" as="font" type="font/ttf" crossorigin>
+    <link rel="stylesheet" href="./assets/fonts/fontawesome-free-6.1.2-web/css/all.min.css" />
+    <link rel="stylesheet" href="./assets/fonts/dmsans/dmsans.css" />
+
+    <!-- Preload CSS crítico para mejorar LCP -->
+    <link rel="preload" href="./assets/css/styles.css" as="style" />
+
+    <!-- Estilos -->
+    <link rel="stylesheet" href="./assets/css/reset.css" />
+    <link rel="stylesheet" href="./assets/css/styles.css" />
+    <link rel="stylesheet" href="./assets/css/responsive.css" />
+
+    <!-- Scripts (no bloquean render) -->
+    <script src="assets/js/menu-mobile.js" defer></script>
+    <script src="assets/js/navbar-fixed.js" defer></script>
+    <script src="assets/js/dark.js" defer></script>
+</head>
+
+<body>
+    <!-- Enlace para saltar directamente al contenido (a11y) -->
+    <a class="skip-link" href="#main">Saltar al contenido</a>
+
+    <!-- BOTÓN MODO OSCURO -->
+    <div class="switcher">
+        <button class="switcher__btn" type="button" aria-label="Cambiar tema" aria-pressed="false">
+            <span class="switcher__icon-light" aria-hidden="true">
+                <i class="fa-solid fa-moon switcher__icon"></i>
+            </span>
+            <span class="switcher__icon-dark" aria-hidden="true">
+                <i class="fa-solid fa-lightbulb switcher__icon"></i>
+            </span>
+        </button>
+    </div>
+
+    <!-- MENU NAVEGACION RESPONSIVE (dialog + focus-trap + overlay) -->
+    <div class="menu-mobile" id="mobile-menu" role="dialog" aria-modal="true" aria-labelledby="mobile-menu-title"
+        tabindex="-1">
+        <header class="menu-mobile__header">
+            <h2 id="mobile-menu-title" class="visually-hidden">Navegación</h2>
+
+            <div class="menu-mobile__container-logo">
+                <a class="menu-mobile__link-logo" href="#">
+                    <!-- LOGO MOBILE con swap completo de src/srcset -->
+                    <picture class="js-theme-logo" data-light-webp="assets/img/logo1.webp"
+                        data-light-png="assets/img/logo1.png" data-dark-webp="assets/img/logo2.webp"
+                        data-dark-png="assets/img/logo2.png">
+                        <source srcset="assets/img/logo1.webp" type="image/webp" />
+                        <img class="menu-mobile__logo" src="assets/img/logo1.png" alt="Logo del sitio web"
+                            decoding="async" width="150" height="38" />
+                    </picture>
+                </a>
+            </div>
+
+            <button class="menu-mobile__close" type="button" aria-label="Cerrar menú">
+                <i class="menu-mobile__icon-close fa-solid fa-xmark" aria-hidden="true"></i>
+            </button>
+        </header>
+
+        <div class="menu-mobile__body">
+            <nav class="menu-mobile__nav" aria-label="Navegación móvil">
+                <ul class="menu-mobile__list">
+                    <li class="menu-mobile__item"><a href="#" class="menu-mobile__link">Inicio</a></li>
+
+                    <li class="menu-mobile__item">
+                        <button class="menu-mobile__link" aria-expanded="false" aria-controls="mm-sub-servicios"
+                            type="button">
+                            Servicios <i class="fa-solid fa-chevron-down menu-mobile__icon" aria-hidden="true"></i>
+                        </button>
+                        <ul id="mm-sub-servicios" class="menu-mobile__submenu-mobile">
+                            <li class="submenu-mobile__item"><a href="#" class="submenu-mobile__link">Diseño Web</a>
+                            </li>
+                            <li class="submenu-mobile__item"><a href="#" class="submenu-mobile__link">Desarrollo Web</a>
+                            </li>
+                            <li class="submenu-mobile__item"><a href="#" class="submenu-mobile__link">Desarrollo de
+                                    apps</a></li>
+                            <li class="submenu-mobile__item"><a href="#" class="submenu-mobile__link">Programación</a>
+                            </li>
+                            <li class="submenu-mobile__item"><a href="#" class="submenu-mobile__link">Consultoría</a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="menu-mobile__item">
+                        <button class="menu-mobile__link" aria-expanded="false" aria-controls="mm-sub-portafolio"
+                            type="button">
+                            Portafolio <i class="fa-solid fa-chevron-down menu-mobile__icon" aria-hidden="true"></i>
+                        </button>
+                        <ul id="mm-sub-portafolio" class="menu-mobile__submenu-mobile">
+                            <li class="submenu-mobile__item"><a href="#" class="submenu-mobile__link">Diseño Web</a>
+                            </li>
+                            <li class="submenu-mobile__item"><a href="#" class="submenu-mobile__link">Desarrollo Web</a>
+                            </li>
+                            <li class="submenu-mobile__item"><a href="#" class="submenu-mobile__link">Desarrollo de
+                                    apps</a></li>
+                            <li class="submenu-mobile__item"><a href="#" class="submenu-mobile__link">Programación</a>
+                            </li>
+                            <li class="submenu-mobile__item"><a href="#" class="submenu-mobile__link">Consultoría</a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="menu-mobile__item">
+                        <button class="menu-mobile__link" aria-expanded="false" aria-controls="mm-sub-blog"
+                            type="button">
+                            Blog <i class="fa-solid fa-chevron-down menu-mobile__icon" aria-hidden="true"></i>
+                        </button>
+                        <ul id="mm-sub-blog" class="menu-mobile__submenu-mobile">
+                            <li class="submenu-mobile__item"><a href="#" class="submenu-mobile__link">Diseño Web</a>
+                            </li>
+                            <li class="submenu-mobile__item"><a href="#" class="submenu-mobile__link">Desarrollo Web</a>
+                            </li>
+                            <li class="submenu-mobile__item"><a href="#" class="submenu-mobile__link">Desarrollo de
+                                    apps</a></li>
+                            <li class="submenu-mobile__item"><a href="#" class="submenu-mobile__link">Programación</a>
+                            </li>
+                            <li class="submenu-mobile__item"><a href="#" class="submenu-mobile__link">Consultoría</a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="menu-mobile__item"><a href="#" class="menu-mobile__link">Equipo</a></li>
+                    <li class="menu-mobile__item"><a href="#" class="menu-mobile__link">Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Overlay clicable para cerrar el menú -->
+    <div class="menu-mobile__overlay" tabindex="-1" hidden></div>
+
+    <!-- ESTRUCTURA PRINCIPAL -->
+    <div class="layout">
+        <!-- MENU -->
+        <section class="layout__menu">
+            <header class="menu__navbar">
+                <!-- LOGO DESKTOP con swap completo -->
+                <div class="navbar__logo">
+                    <a href="#" class="navbar__link-logo">
+                        <picture class="js-theme-logo" data-light-webp="./assets/img/logo1.webp"
+                            data-light-png="./assets/img/logo1.png" data-dark-webp="./assets/img/logo2.webp"
+                            data-dark-png="./assets/img/logo2.png">
+                            <source srcset="./assets/img/logo1.webp" type="image/webp" />
+                            <img src="./assets/img/logo1.png" class="navbar__logo-light" alt="Logo del sitio web"
+                                decoding="async" width="187" height="48" />
+                        </picture>
+                    </a>
+                </div>
+
+                <!-- BOTON MENU RESPONSIVE -->
+                <div class="navbar__mobile-btn">
+                    <button class="mobile-btn__wrap" id="mobile-menu-toggle" type="button" aria-label="Abrir menú"
+                        aria-controls="mobile-menu" aria-expanded="false">
+                        <span class="mobile-btn__line"></span>
+                        <span class="mobile-btn__line"></span>
+                        <span class="mobile-btn__line"></span>
+                    </button>
+                </div>
+
+                <!-- NAVEGACION DESKTOP -->
+                <nav class="navbar__nav" aria-label="Navegación principal">
+                    <ul class="nav__list">
+                        <li class="nav__item"><a href="#" class="nav__title">Inicio</a></li>
+
+                        <li class="nav__item">
+                            <a href="#" class="nav__title">Servicios <i class="fa-solid fa-chevron-down nav__icon"
+                                    aria-hidden="true"></i></a>
+                            <ul class="nav__submenu" aria-label="Servicios">
+                                <li class="submenu__item"><a href="#" class="submenu__title">Diseño Web</a></li>
+                                <li class="submenu__item"><a href="#" class="submenu__title">Desarrollo Web</a></li>
+                                <li class="submenu__item"><a href="#" class="submenu__title">Desarrollo de apps</a></li>
+                                <li class="submenu__item"><a href="#" class="submenu__title">Programación</a></li>
+                                <li class="submenu__item"><a href="#" class="submenu__title">Consultoría</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="nav__item">
+                            <a href="#" class="nav__title">Portafolio <i class="fa-solid fa-chevron-down nav__icon"
+                                    aria-hidden="true"></i></a>
+                            <ul class="nav__submenu" aria-label="Portafolio">
+                                <li class="submenu__item"><a href="#" class="submenu__title">Diseño Web</a></li>
+                                <li class="submenu__item"><a href="#" class="submenu__title">Desarrollo Web</a></li>
+                                <li class="submenu__item"><a href="#" class="submenu__title">Desarrollo de apps</a></li>
+                                <li class="submenu__item"><a href="#" class="submenu__title">Programación</a></li>
+                                <li class="submenu__item"><a href="#" class="submenu__title">Consultoría</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="nav__item">
+                            <a href="#" class="nav__title">Blog <i class="fa-solid fa-chevron-down nav__icon"
+                                    aria-hidden="true"></i></a>
+                            <ul class="nav__submenu" aria-label="Blog">
+                                <li class="submenu__item"><a href="#" class="submenu__title">Diseño Web</a></li>
+                                <li class="submenu__item"><a href="#" class="submenu__title">Desarrollo Web</a></li>
+                                <li class="submenu__item"><a href="#" class="submenu__title">Desarrollo de apps</a></li>
+                                <li class="submenu__item"><a href="#" class="submenu__title">Programación</a></li>
+                                <li class="submenu__item"><a href="#" class="submenu__title">Consultoría</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="nav__item"><a href="#" class="nav__title">Equipo</a></li>
+                        <li class="nav__item"><a href="#" class="nav__title">Contacto</a></li>
+                    </ul>
+                </nav>
+            </header>
+        </section>
+
+        <main id="main">
+            <!-- BANNER -->
+            <section class="layout__banner">
+                <header class="banner__content">
+                    <h1 class="banner__title">Sitios web que convierten</h1>
+                    <a href="#" class="banner__btn">Ver trabajos</a>
+                </header>
+
+                <!-- Formas e imágenes del banner (decorativas) -->
+                <div class="banner__shapes" aria-hidden="true">
+                    <ul class="shapes__list">
+                        <li class="shapes__item shapes__item--shape1">
+                            <div class="shapes__container">
+                                <picture>
+                                    <source srcset="./assets/img/banner-shape-1.webp" type="image/webp" />
+                                    <img class="shapes__img" src="./assets/img/banner-shape-1.png" alt="" loading="lazy"
+                                        decoding="async" fetchpriority="low" />
+                                </picture>
+                            </div>
+                        </li>
+                        <li class="shapes__item shapes__item--shape2">
+                            <div class="shapes__container">
+                                <picture>
+                                    <source srcset="./assets/img/banner-shape-2.webp" type="image/webp" />
+                                    <img class="shapes__img" src="./assets/img/banner-shape-2.png" alt="" loading="lazy"
+                                        decoding="async" fetchpriority="low" />
+                                </picture>
+                            </div>
+                        </li>
+                        <li class="shapes__item shapes__item--shape3">
+                            <div class="shapes__container">
+                                <picture>
+                                    <source srcset="./assets/img/bubble-16.webp" type="image/webp" />
+                                    <img class="shapes__img" src="./assets/img/bubble-16.png" alt="" loading="lazy"
+                                        decoding="async" fetchpriority="low" />
+                                </picture>
+                            </div>
+                        </li>
+                        <li class="shapes__item shapes__item--shape4">
+                            <div class="shapes__container">
+                                <picture>
+                                    <source srcset="./assets/img/bubble-15.webp" type="image/webp" />
+                                    <img class="shapes__img" src="./assets/img/bubble-15.png" alt="" loading="lazy"
+                                        decoding="async" fetchpriority="low" />
+                                </picture>
+                            </div>
+                        </li>
+                        <li class="shapes__item shapes__item--shape5">
+                            <div class="shapes__container">
+                                <picture>
+                                    <source srcset="./assets/img/bubble-14.webp" type="image/webp" />
+                                    <img class="shapes__img" src="./assets/img/bubble-14.png" alt="" loading="lazy"
+                                        decoding="async" fetchpriority="low" />
+                                </picture>
+                            </div>
+                        </li>
+                        <li class="shapes__item shapes__item--shape6">
+                            <div class="shapes__container">
+                                <picture>
+                                    <source srcset="./assets/img/bubble-16.webp" type="image/webp" />
+                                    <img class="shapes__img" src="./assets/img/bubble-16.png" alt="" loading="lazy"
+                                        decoding="async" fetchpriority="low" />
+                                </picture>
+                            </div>
+                        </li>
+                        <li class="shapes__item shapes__item--shape7">
+                            <div class="shapes__container">
+                                <picture>
+                                    <source srcset="./assets/img/bubble-26.webp" type="image/webp" />
+                                    <img class="shapes__img" src="./assets/img/bubble-26.png" alt="" loading="lazy"
+                                        decoding="async" fetchpriority="low" />
+                                </picture>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- SERVICIOS -->
+            <section class="layout__services">
+                <div class="services__grid">
+                    <header class="services__header">
+                        <p class="services__subtitle">¿Qué podemos hacer por tu negocio?</p>
+                        <h2 class="services__title">Servicios que <br /> impulsan tus resultados</h2>
+                    </header>
+
+                    <div class="services__list">
+                        <article class="services__service services__service--bottom">
+                            <div class="service__container-img">
+                                <picture>
+                                    <source srcset="./assets/img/icon-1.webp" type="image/webp" />
+                                    <img class="service__img" src="./assets/img/icon-1.png" alt="Diseño UX/UI"
+                                        decoding="async" loading="lazy" fetchpriority="low" />
+                                </picture>
+                            </div>
+                            <div class="service__content">
+                                <h3 class="service__title"><a href="#" class="service__link">Diseño UX/UI</a></h3>
+                                <p class="service__description">Desde investigación ligera y wireframes hasta interfaces
+                                    en Figma. Sistemas de diseño reutilizables y enfoque en conversión.</p>
+                                <a href="#" class="service__more">Ver servicio</a>
+                            </div>
+                        </article>
+
+                        <article class="services__service services__service--middle">
+                            <div class="service__container-img">
+                                <picture>
+                                    <source srcset="./assets/img/icon-2.webp" type="image/webp" />
+                                    <img class="service__img" src="./assets/img/icon-2.png" alt="Desarrollo Web"
+                                        decoding="async" loading="lazy" fetchpriority="low" />
+                                </picture>
+                            </div>
+                            <div class="service__content">
+                                <h3 class="service__title"><a href="#" class="service__link">Desarrollo Web</a></h3>
+                                <p class="service__description">Sitios y landing pages rápidos, accesibles y seguros.
+                                    Integración con CMS, formularios, pagos y herramientas de terceros.</p>
+                                <a href="#" class="service__more">Ver servicio</a>
+                            </div>
+                        </article>
+
+                        <article class="services__service services__service--top">
+                            <div class="service__container-img">
+                                <picture>
+                                    <source srcset="./assets/img/icon-3.webp" type="image/webp" />
+                                    <img class="service__img" src="./assets/img/icon-3.png"
+                                        alt="SEO Técnico y Analítica" decoding="async" loading="lazy"
+                                        fetchpriority="low" />
+                                </picture>
+                            </div>
+                            <div class="service__content">
+                                <h3 class="service__title"><a href="#" class="service__link">SEO Técnico y Analítica</a>
+                                </h3>
+                                <p class="service__description">Velocidad, indexación y datos estructurados. Medimos con
+                                    GA4/Tag Manager y optimizamos embudos para más leads.</p>
+                                <a href="#" class="service__more">Ver servicio</a>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+
+                <ul class="services__service-shapes" aria-hidden="true">
+                    <li class="service-shapes__item service-shapes--shape1">
+                        <div class="service-shapes__container">
+                            <picture>
+                                <source srcset="./assets/img/circle-2.webp" type="image/webp" />
+                                <img class="service-shapes__img" src="./assets/img/circle-2.png" alt="" loading="lazy"
+                                    decoding="async" fetchpriority="low" />
+                            </picture>
+                        </div>
+                    </li>
+                    <li class="service-shapes__item service-shapes--shape2">
+                        <div class="service-shapes__container">
+                            <picture>
+                                <source srcset="./assets/img/bubble-2.webp" type="image/webp" />
+                                <img class="service-shapes__img" src="./assets/img/bubble-2.png" alt="" loading="lazy"
+                                    decoding="async" fetchpriority="low" />
+                            </picture>
+                        </div>
+                    </li>
+                    <li class="service-shapes__item service-shapes--shape3">
+                        <div class="service-shapes__container">
+                            <picture>
+                                <source srcset="./assets/img/bubble-1.webp" type="image/webp" />
+                                <img class="service-shapes__img" src="./assets/img/bubble-1.png" alt="" loading="lazy"
+                                    decoding="async" fetchpriority="low" />
+                            </picture>
+                        </div>
+                    </li>
+                </ul>
+            </section>
+
+            <!-- PROYECTOS -->
+            <section class="layout__projects">
+                <div class="projects__grid">
+                    <header class="projects__header">
+                        <p class="projects__subtitle">Nuestros proyectos</p>
+                        <h2 class="projects__title">Algunos de nuestros <br /> mejores trabajos</h2>
+                    </header>
+
+                    <ul class="projects__categories" role="tablist" aria-label="Categorías de proyectos">
+                        <li class="categories__item categories__item--active" role="tab" aria-selected="true"
+                            tabindex="0">Todos los trabajos</li>
+                        <li class="categories__item" role="tab" aria-selected="false" tabindex="0">Desarrollo Web</li>
+                        <li class="categories__item" role="tab" aria-selected="false" tabindex="0">Desarrollo Móvil</li>
+                        <li class="categories__item" role="tab" aria-selected="false" tabindex="0">Diseño Web</li>
+                    </ul>
+
+                    <div class="projects__all">
+                        <article class="projects__project">
+                            <div class="project__container-img">
+                                <a href="#" class="project__link-img">
+                                    <picture>
+                                        <source srcset="./assets/img/project-1.webp" type="image/webp" />
+                                        <img class="project__img" src="./assets/img/project-1.jpg"
+                                            alt="Lenda — Landing para SaaS de facturación" loading="lazy"
+                                            decoding="async" />
+                                    </picture>
+                                </a>
+                            </div>
+                            <div class="project__content">
+                                <h3 class="project__title"><a href="#" class="project__link-title">Lenda — Landing para
+                                        SaaS de facturación</a></h3>
+                                <div class="project__tags"><span class="project__tag">Web,</span> <span
+                                        class="project__tag">UI/UX,</span> <span class="project__tag">SEO</span></div>
+                            </div>
+                        </article>
+
+                        <article class="projects__project">
+                            <div class="project__container-img">
+                                <a href="#" class="project__link-img">
+                                    <picture>
+                                        <source srcset="./assets/img/project-2.webp" type="image/webp" />
+                                        <img class="project__img" src="./assets/img/project-2.jpg"
+                                            alt="Mercado Local — Tienda de productos orgánicos" loading="lazy"
+                                            decoding="async" />
+                                    </picture>
+                                </a>
+                            </div>
+                            <div class="project__content">
+                                <h3 class="project__title"><a href="#" class="project__link-title">Mercado Local —
+                                        Tienda de productos orgánicos</a></h3>
+                                <div class="project__tags"><span class="project__tag">Web,</span> <span
+                                        class="project__tag">eCommerce</span></div>
+                            </div>
+                        </article>
+
+                        <article class="projects__project">
+                            <div class="project__container-img">
+                                <a href="#" class="project__link-img">
+                                    <picture>
+                                        <source srcset="./assets/img/project-3.webp" type="image/webp" />
+                                        <img class="project__img" src="./assets/img/project-3.jpg"
+                                            alt="Koach — Plataforma de clases online" loading="lazy" decoding="async" />
+                                    </picture>
+                                </a>
+                            </div>
+                            <div class="project__content">
+                                <h3 class="project__title"><a href="#" class="project__link-title">Koach — Plataforma de
+                                        clases online</a></h3>
+                                <div class="project__tags"><span class="project__tag">Diseño,</span> <span
+                                        class="project__tag">Desarrollo</span></div>
+                            </div>
+                        </article>
+
+                        <article class="projects__project">
+                            <div class="project__container-img">
+                                <a href="#" class="project__link-img">
+                                    <picture>
+                                        <source srcset="./assets/img/project-4.webp" type="image/webp" />
+                                        <img class="project__img" src="./assets/img/project-4.jpg"
+                                            alt="Helix — Rediseño de agencia creativa" loading="lazy"
+                                            decoding="async" />
+                                    </picture>
+                                </a>
+                            </div>
+                            <div class="project__content">
+                                <h3 class="project__title"><a href="#" class="project__link-title">Helix — Rediseño de
+                                        agencia creativa</a></h3>
+                                <div class="project__tags"><span class="project__tag">Web,</span> <span
+                                        class="project__tag">UI/UX</span></div>
+                            </div>
+                        </article>
+
+                        <article class="projects__project">
+                            <div class="project__container-img">
+                                <a href="#" class="project__link-img">
+                                    <picture>
+                                        <source srcset="./assets/img/project-5.webp" type="image/webp" />
+                                        <img class="project__img" src="./assets/img/project-5.jpg"
+                                            alt="Missael.dev — Portafolio profesional" loading="lazy"
+                                            decoding="async" />
+                                    </picture>
+                                </a>
+                            </div>
+                            <div class="project__content">
+                                <h3 class="project__title"><a href="#" class="project__link-title">Missael.dev —
+                                        Portafolio profesional</a></h3>
+                                <div class="project__tags"><span class="project__tag">Logo,</span> <span
+                                        class="project__tag">Web,</span> <span class="project__tag">Blog</span></div>
+                            </div>
+                        </article>
+
+                        <article class="projects__project">
+                            <div class="project__container-img">
+                                <a href="#" class="project__link-img">
+                                    <picture>
+                                        <source srcset="./assets/img/project-6.webp" type="image/webp" />
+                                        <img class="project__img" src="./assets/img/project-6.jpg"
+                                            alt="Bookly — Reservas para servicios" loading="lazy" decoding="async" />
+                                    </picture>
+                                </a>
+                            </div>
+                            <div class="project__content">
+                                <h3 class="project__title"><a href="#" class="project__link-title">Bookly — Reservas
+                                        para servicios</a></h3>
+                                <div class="project__tags"><span class="project__tag">Logo,</span> <span
+                                        class="project__tag">Web,</span> <span class="project__tag">Aplicación</span>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+
+                <ul class="projects__project-shapes" aria-hidden="true">
+                    <li class="project-shapes__item project-shapes--shape1">
+                        <div class="project-shapes__container">
+                            <picture>
+                                <source srcset="./assets/img/circle-2.webp" type="image/webp" />
+                                <img class="project-shapes__img" src="./assets/img/circle-2.png" alt="" loading="lazy"
+                                    decoding="async" fetchpriority="low" />
+                            </picture>
+                        </div>
+                    </li>
+                    <li class="project-shapes__item project-shapes--shape2">
+                        <div class="project-shapes__container">
+                            <picture>
+                                <source srcset="./assets/img/bubble-2.webp" type="image/webp" />
+                                <img class="project-shapes__img" src="./assets/img/bubble-2.png" alt="" loading="lazy"
+                                    decoding="async" fetchpriority="low" />
+                            </picture>
+                        </div>
+                    </li>
+                    <li class="project-shapes__item project-shapes--shape3">
+                        <div class="project-shapes__container">
+                            <picture>
+                                <source srcset="./assets/img/bubble-1.webp" type="image/webp" />
+                                <img class="project-shapes__img" src="./assets/img/bubble-1.png" alt="" loading="lazy"
+                                    decoding="async" fetchpriority="low" />
+                            </picture>
+                        </div>
+                    </li>
+                </ul>
+            </section>
+
+            <!-- ESTADÍSTICAS -->
+            <section class="layout__stats">
+                <div class="stats__container">
+                    <header class="stats__header">
+                        <h4 class="stats__subtitle">Estudio de diseño y desarrollo</h4>
+                        <h2 class="stats__title">Resultados en cifras</h2>
+                        <p class="stats__description">Un vistazo a nuestros últimos proyectos y al impacto en el negocio
+                        </p>
+                    </header>
+
+                    <div class="stats__progress" role="list">
+                        <article class="stats__stat" role="listitem" aria-label="Años activos">
+                            <div class="stat__icon">
+                                <picture>
+                                    <source srcset="./assets/img/icon-7.webp" type="image/webp" />
+                                    <img src="./assets/img/icon-7.png" alt="" loading="lazy" decoding="async"
+                                        fetchpriority="low" width="64" height="64" />
+                                </picture>
+                            </div>
+                            <span class="stat__count" aria-hidden="true">+4</span>
+                            <h6 class="stat__title">Años activos</h6>
+                        </article>
+
+                        <article class="stats__stat" role="listitem" aria-label="Proyectos lanzados">
+                            <div class="stat__icon">
+                                <picture>
+                                    <source srcset="./assets/img/icon-8.webp" type="image/webp" />
+                                    <img src="./assets/img/icon-8.png" alt="" loading="lazy" decoding="async"
+                                        fetchpriority="low" width="64" height="64" />
+                                </picture>
+                            </div>
+                            <span class="stat__count" aria-hidden="true">+25</span>
+                            <h6 class="stat__title">Proyectos lanzados</h6>
+                        </article>
+
+                        <article class="stats__stat" role="listitem" aria-label="Sectores atendidos">
+                            <div class="stat__icon">
+                                <picture>
+                                    <source srcset="./assets/img/icon-9.webp" type="image/webp" />
+                                    <img src="./assets/img/icon-9.png" alt="" loading="lazy" decoding="async"
+                                        fetchpriority="low" width="64" height="64" />
+                                </picture>
+                            </div>
+                            <span class="stat__count" aria-hidden="true">+12</span>
+                            <h6 class="stat__title">Sectores atendidos</h6>
+                        </article>
+
+                        <article class="stats__stat" role="listitem" aria-label="Clientes felices">
+                            <div class="stat__icon">
+                                <picture>
+                                    <source srcset="./assets/img/apple.webp" type="image/webp" />
+                                    <img src="./assets/img/apple.png" alt="" loading="lazy" decoding="async"
+                                        fetchpriority="low" width="64" height="64" />
+                                </picture>
+                            </div>
+                            <span class="stat__count" aria-hidden="true">+18</span>
+                            <h6 class="stat__title">Clientes felices</h6>
+                        </article>
+                    </div>
+                </div>
+            </section>
+
+            <!-- RESEÑAS -->
+            <section class="layout__reviews">
+                <div class="reviews__grid">
+                    <header class="reviews__header">
+                        <h4 class="reviews__subtitle">Testimonios</h4>
+                        <h2 class="reviews__title">¿Qué dicen nuestros clientes?</h2>
+                        <p class="reviews__description">Historias reales de equipos que crecieron con su nuevo sitio.
+                        </p>
+                    </header>
+
+                    <div class="reviews__container">
+                        <article class="reviews__review">
+                            <span class="review__company">
+                                <picture>
+                                    <source srcset="./assets/img/google-2.webp" type="image/webp" />
+                                    <img class="review__img" src="./assets/img/google-2.png" alt="Google" loading="lazy"
+                                        decoding="async" />
+                                </picture>
+                            </span>
+                            <p class="review__description">"El nuevo sitio cargó 3× más rápido y el formulario nos
+                                triplicó los leads."</p>
+                            <div class="review__author">
+                                <div class="author__container-img">
+                                    <picture>
+                                        <source srcset="./assets/img/testimonial-2.webp" type="image/webp" />
+                                        <img class="author__img" src="./assets/img/testimonial-2.png"
+                                            alt="Foto de Laura Méndez" loading="lazy" decoding="async" />
+                                    </picture>
+                                </div>
+                                <div class="author__content">
+                                    <span class="author__name">Laura Méndez</span>
+                                    <span class="author__description">CMO, FinTech LATAM</span>
+                                </div>
+                            </div>
+                        </article>
+
+                        <article class="reviews__review">
+                            <span class="review__company">
+                                <picture>
+                                    <source srcset="./assets/img/udemy.webp" type="image/webp" />
+                                    <img class="review__img" src="./assets/img/udemy.png" alt="Udemy" loading="lazy"
+                                        decoding="async" />
+                                </picture>
+                            </span>
+                            <p class="review__description">"Entendieron el negocio y lanzamos en dos semanas una landing
+                                que vende."</p>
+                            <div class="review__author">
+                                <div class="author__container-img">
+                                    <picture>
+                                        <source srcset="./assets/img/testimonial-2.webp" type="image/webp" />
+                                        <img class="author__img" src="./assets/img/testimonial-2.png"
+                                            alt="Foto de Jorge Paredes" loading="lazy" decoding="async" />
+                                    </picture>
+                                </div>
+                                <div class="author__content">
+                                    <span class="author__name">Jorge Paredes</span>
+                                    <span class="author__description">Founder, Mercado Local</span>
+                                </div>
+                            </div>
+                        </article>
+
+                        <article class="reviews__review">
+                            <span class="review__company">
+                                <picture>
+                                    <source srcset="./assets/img/youtube.webp" type="image/webp" />
+                                    <img class="review__img" src="./assets/img/youtube.png" alt="YouTube" loading="lazy"
+                                        decoding="async" />
+                                </picture>
+                            </span>
+                            <p class="review__description">"Excelente comunicación, diseño claro y medición de todo.
+                                Recomendados."</p>
+                            <div class="review__author">
+                                <div class="author__container-img">
+                                    <picture>
+                                        <source srcset="./assets/img/testimonial-2.webp" type="image/webp" />
+                                        <img class="author__img" src="./assets/img/testimonial-2.png"
+                                            alt="Foto de Ana Ríos" loading="lazy" decoding="async" />
+                                    </picture>
+                                </div>
+                                <div class="author__content">
+                                    <span class="author__name">Ana Ríos</span>
+                                    <span class="author__description">Head of Growth, EduKo</span>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+
+                <ul class="reviews__review-shapes" aria-hidden="true">
+                    <li class="review-shapes__item review-shapes--shape1">
+                        <div class="review-shapes__container">
+                            <picture>
+                                <source srcset="./assets/img/bubble-1.webp" type="image/webp" />
+                                <img class="review-shapes__img" src="./assets/img/bubble-1.png" alt="" loading="lazy"
+                                    decoding="async" fetchpriority="low" />
+                            </picture>
+                        </div>
+                    </li>
+                </ul>
+            </section>
+
+            <!-- CLIENTES -->
+            <section class="layout__clients">
+                <div class="clients__container">
+                    <header class="clients__header">
+                        <h4 class="clients__subtitle">Mejores Clientes</h4>
+                        <h2 class="clients__title">Creamos soluciones para marcas y equipos en crecimiento</h2>
+                        <p class="clients__description">Trabajamos con startups y pymes de educación, retail, finanzas y
+                            servicios profesionales.</p>
+                    </header>
+
+                    <div class="clients__logos">
+                        <article class="clients__item">
+                            <picture>
+                                <source srcset="./assets/img/brand-1.webp" type="image/webp" />
+                                <img class="clients__img" src="./assets/img/brand-1.png" alt="Cliente destacado 1"
+                                    loading="lazy" decoding="async" />
+                            </picture>
+                        </article>
+                        <article class="clients__item">
+                            <picture>
+                                <source srcset="./assets/img/brand-1.webp" type="image/webp" />
+                                <img class="clients__img" src="./assets/img/brand-1.png" alt="Cliente destacado 2"
+                                    loading="lazy" decoding="async" />
+                            </picture>
+                        </article>
+                        <article class="clients__item">
+                            <picture>
+                                <source srcset="./assets/img/brand-1.webp" type="image/webp" />
+                                <img class="clients__img" src="./assets/img/brand-1.png" alt="Cliente destacado 3"
+                                    loading="lazy" decoding="async" />
+                            </picture>
+                        </article>
+                        <article class="clients__item">
+                            <picture>
+                                <source srcset="./assets/img/brand-1.webp" type="image/webp" />
+                                <img class="clients__img" src="./assets/img/brand-1.png" alt="Cliente destacado 4"
+                                    loading="lazy" decoding="async" />
+                            </picture>
+                        </article>
+                    </div>
+                </div>
+
+                <ul class="clients__client-shapes" aria-hidden="true">
+                    <li class="client-shapes__item client-shapes--shape1">
+                        <div class="client-shapes__container">
+                            <picture>
+                                <source srcset="./assets/img/line-9.webp" type="image/webp" />
+                                <img class="client-shapes__img" src="./assets/img/line-9.png" alt="" loading="lazy"
+                                    decoding="async" fetchpriority="low" />
+                            </picture>
+                        </div>
+                    </li>
+                </ul>
+            </section>
+
+            <!-- NOTICIAS -->
+            <section class="layout__news">
+                <div class="news__container">
+                    <header class="news__header">
+                        <h4 class="news__subtitle">¿Qué está pasando?</h4>
+                        <h2 class="news__title">Últimas noticias</h2>
+                        <p class="news__description">Novedades sobre desarrollo web, performance, SEO técnico y diseño
+                            digital</p>
+                    </header>
+
+                    <div class="news__list">
+                        <article class="news__new">
+                            <div class="new__container-img">
+                                <picture>
+                                    <source srcset="./assets/img/story-1.webp" type="image/webp" />
+                                    <img class="new__img" src="./assets/img/story-1.jpg"
+                                        alt="Checklist para lanzar una landing que convierta" loading="lazy"
+                                        decoding="async" />
+                                </picture>
+                            </div>
+                            <div class="new__content">
+                                <h3 class="new__title"><a href="#" class="new__link">Checklist para lanzar una landing
+                                        que convierta</a></h3>
+                                <p class="new__description">Dominio, SSL, performance, SEO básico y analítica: guía
+                                    práctica para ir a producción sin sustos.</p>
+                                <a class="new__more" href="#">Leer más <i class="fa-solid fa-chevron-right new__icon"
+                                        aria-hidden="true"></i></a>
+                            </div>
+                        </article>
+
+                        <article class="news__new">
+                            <div class="new__container-img">
+                                <picture>
+                                    <source srcset="./assets/img/story-2.webp" type="image/webp" />
+                                    <img class="new__img" src="./assets/img/story-2.jpg"
+                                        alt="Cómo medir la velocidad de tu web con Lighthouse" loading="lazy"
+                                        decoding="async" />
+                                </picture>
+                            </div>
+                            <div class="new__content">
+                                <h3 class="new__title"><a href="#" class="new__link">Cómo medir la velocidad de tu web
+                                        con Lighthouse</a></h3>
+                                <p class="new__description">Qué métricas mirar, cómo interpretarlas y acciones rápidas
+                                    para mejorar tu puntuación.</p>
+                                <a class="new__more" href="#">Leer más <i class="fa-solid fa-chevron-right new__icon"
+                                        aria-hidden="true"></i></a>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+
+                <ul class="news__new-shapes" aria-hidden="true">
+                    <li class="new-shapes__item new-shapes--shape1">
+                        <div class="new-shapes__container">
+                            <picture>
+                                <source srcset="./assets/img/bubble-1.webp" type="image/webp" />
+                                <img class="new-shapes__img" src="./assets/img/bubble-1.png" alt="" loading="lazy"
+                                    decoding="async" fetchpriority="low" />
+                            </picture>
+                        </div>
+                    </li>
+                    <li class="new-shapes__item new-shapes--shape2">
+                        <div class="new-shapes__container">
+                            <picture>
+                                <source srcset="./assets/img/line-1.webp" type="image/webp" />
+                                <img class="new-shapes__img" src="./assets/img/line-1.png" alt="" loading="lazy"
+                                    decoding="async" fetchpriority="low" />
+                            </picture>
+                        </div>
+                    </li>
+                    <li class="new-shapes__item new-shapes--shape3">
+                        <div class="new-shapes__container">
+                            <picture>
+                                <source srcset="./assets/img/line-2.webp" type="image/webp" />
+                                <img class="new-shapes__img" src="./assets/img/line-2.png" alt="" loading="lazy"
+                                    decoding="async" fetchpriority="low" />
+                            </picture>
+                        </div>
+                    </li>
+                    <li class="new-shapes__item new-shapes--shape4">
+                        <div class="new-shapes__container">
+                            <picture>
+                                <source srcset="./assets/img/bubble-2.webp" type="image/webp" />
+                                <img class="new-shapes__img" src="./assets/img/bubble-2.png" alt="" loading="lazy"
+                                    decoding="async" fetchpriority="low" />
+                            </picture>
+                        </div>
+                    </li>
+                </ul>
+            </section>
+
+            <!-- CONTACTO -->
+            <section class="layout__contact">
+                <div class="contact__container">
+                    <header class="contact__header">
+                        <h4 class="contact__subtitle">Trabajemos juntos</h4>
+                        <h2 class="contact__title">¿Impulsamos tu próximo lanzamiento?</h2>
+                        <a class="contact__btn" href="#">Pedir información</a>
+                    </header>
+
+                    <div class="contact__images" aria-hidden="true">
+                        <div class="contact__thumb contact__thumb--chat">
+                            <picture>
+                                <source srcset="./assets/img/chat-group.webp" type="image/webp" />
+                                <img class="contact__img" src="./assets/img/chat-group.png" alt="" loading="lazy"
+                                    decoding="async" fetchpriority="low" />
+                            </picture>
+                        </div>
+                        <div class="contact__thumb contact__thumb--laptop">
+                            <picture>
+                                <source srcset="./assets/img/laptop-poses.webp" type="image/webp" />
+                                <img class="contact__img" src="./assets/img/laptop-poses.png" alt="" loading="lazy"
+                                    decoding="async" fetchpriority="low" />
+                            </picture>
+                        </div>
+                        <div class="contact__thumb contact__thumb--mobile">
+                            <picture>
+                                <source srcset="./assets/img/men-mobile.webp" type="image/webp" />
+                                <img class="contact__img" src="./assets/img/men-mobile.png" alt="" loading="lazy"
+                                    decoding="async" fetchpriority="low" />
+                            </picture>
+                        </div>
+                    </div>
+                </div>
+
+                <ul class="contact__backshapes" aria-hidden="true">
+                    <li class="backshapes__item backshapes--shape1">
+                        <picture>
+                            <source srcset="./assets/img/bubble-12.webp" type="image/webp" />
+                            <img class="backshapes__img" src="./assets/img/bubble-12.png" alt="" loading="lazy"
+                                decoding="async" fetchpriority="low" />
+                        </picture>
+                    </li>
+                    <li class="backshapes__item backshapes--shape2">
+                        <picture>
+                            <source srcset="./assets/img/bubble-16.webp" type="image/webp" />
+                            <img class="backshapes__img" src="./assets/img/bubble-16.png" alt="" loading="lazy"
+                                decoding="async" fetchpriority="low" />
+                        </picture>
+                    </li>
+                    <li class="backshapes__item backshapes--shape3">
+                        <picture>
+                            <source srcset="./assets/img/bubble-13.webp" type="image/webp" />
+                            <img class="backshapes__img" src="./assets/img/bubble-13.png" alt="" loading="lazy"
+                                decoding="async" fetchpriority="low" />
+                        </picture>
+                    </li>
+                    <li class="backshapes__item backshapes--shape4">
+                        <picture>
+                            <source srcset="./assets/img/bubble-14.webp" type="image/webp" />
+                            <img class="backshapes__img" src="./assets/img/bubble-14.png" alt="" loading="lazy"
+                                decoding="async" fetchpriority="low" />
+                        </picture>
+                    </li>
+                    <li class="backshapes__item backshapes--shape5">
+                        <picture>
+                            <source srcset="./assets/img/bubble-16.webp" type="image/webp" />
+                            <img class="backshapes__img" src="./assets/img/bubble-16.png" alt="" loading="lazy"
+                                decoding="async" fetchpriority="low" />
+                        </picture>
+                    </li>
+                    <li class="backshapes__item backshapes--shape6">
+                        <picture>
+                            <source srcset="./assets/img/bubble-15.webp" type="image/webp" />
+                            <img class="backshapes__img" src="./assets/img/bubble-15.png" alt="" loading="lazy"
+                                decoding="async" fetchpriority="low" />
+                        </picture>
+                    </li>
+                    <li class="backshapes__item backshapes--shape7">
+                        <picture>
+                            <source srcset="./assets/img/bubble-16.webp" type="image/webp" />
+                            <img class="backshapes__img" src="./assets/img/bubble-16.png" alt="" loading="lazy"
+                                decoding="async" fetchpriority="low" />
+                        </picture>
+                    </li>
+                </ul>
+            </section>
+        </main>
+
+        <!-- PIE DE PAGINA -->
+        <footer class="layout__footer">
+            <div class="footer__container">
+                <section class="footer__top" aria-label="Redes sociales">
+                    <ul class="footer__social">
+                        <li class="social__item"><a href="#" class="social__link" aria-label="Facebook"><i
+                                    class="fa-brands fa-facebook-f social__img" aria-hidden="true"></i></a></li>
+                        <li class="social__item"><a href="#" class="social__link" aria-label="Twitter"><i
+                                    class="fa-brands fa-twitter social__img" aria-hidden="true"></i></a></li>
+                        <li class="social__item"><a href="#" class="social__link" aria-label="YouTube"><i
+                                    class="fa-brands fa-youtube social__img" aria-hidden="true"></i></a></li>
+                        <li class="social__item"><a href="#" class="social__link" aria-label="LinkedIn"><i
+                                    class="fa-brands fa-linkedin social__img" aria-hidden="true"></i></a></li>
+                        <li class="social__item"><a href="#" class="social__link" aria-label="Instagram"><i
+                                    class="fa-brands fa-instagram social__img" aria-hidden="true"></i></a></li>
+                        <li class="social__item"><a href="#" class="social__link" aria-label="Pinterest"><i
+                                    class="fa-brands fa-pinterest-p social__img" aria-hidden="true"></i></a></li>
+                        <li class="social__item"><a href="#" class="social__link" aria-label="Vimeo"><i
+                                    class="fa-brands fa-vimeo-v social__img" aria-hidden="true"></i></a></li>
+                        <li class="social__item"><a href="#" class="social__link" aria-label="Behance"><i
+                                    class="fa-brands fa-behance social__img" aria-hidden="true"></i></a></li>
+                    </ul>
+                </section>
+                <section class="footer__main">
+                    <div class="footer__fleft">
+                        <div class="fleft__container">
+                            <h2 class="fleft__title">¡Contáctanos!</h2>
+                            <p class="fleft__subtitle">Cuéntanos de tu proyecto y te respondemos en 24 horas. Sin
+                                compromiso.</p>
+
+                            <form class="fleft__form" action="#" method="post">
+                                <div class="fleft__group">
+                                    <span class="fleft__mail-icon" aria-hidden="true">
+                                        <i class="fa-solid fa-envelope-open-text fleft__img"></i>
+                                    </span>
+                                    <label for="footer-email" class="visually-hidden">Correo electrónico</label>
+                                    <input id="footer-email" name="email" type="email" required
+                                        class="fleft__form-control" placeholder="Correo electrónico"
+                                        autocomplete="email" />
+                                    <button type="submit" class="fleft__btn">Suscríbete</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <div class="footer__fright" aria-label="Enlaces del sitio">
+                        <div class="footer__widget footer__widget--50">
+                            <h6 class="widget__title">Servicios</h6>
+                            <ul class="widget__list">
+                                <li class="widget__item"><a href="#" class="widget__link">Diseño</a></li>
+                                <li class="widget__item"><a href="#" class="widget__link">Desarrollo web</a></li>
+                                <li class="widget__item"><a href="#" class="widget__link">Programación</a></li>
+                                <li class="widget__item"><a href="#" class="widget__link">Marketing</a></li>
+                                <li class="widget__item"><a href="#" class="widget__link">Consultoría</a></li>
+                            </ul>
+                        </div>
+
+                        <div class="footer__widget footer__widget--25">
+                            <h6 class="widget__title">Recursos</h6>
+                            <ul class="widget__list">
+                                <li class="widget__item"><a href="#" class="widget__link">Blog</a></li>
+                                <li class="widget__item"><a href="#" class="widget__link">Formación</a></li>
+                                <li class="widget__item"><a href="#" class="widget__link">Portafolio</a></li>
+                            </ul>
+                        </div>
+
+                        <div class="footer__widget footer__widget--25">
+                            <h6 class="widget__title">Soporte</h6>
+                            <ul class="widget__list">
+                                <li class="widget__item"><a href="#" class="widget__link">Contacto</a></li>
+                                <li class="widget__item"><a href="#" class="widget__link">Política de Privacidad</a>
+                                </li>
+                                <li class="widget__item"><a href="#" class="widget__link">Términos de uso</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="footer__bottom">
+                    <div class="footer__copyright">
+                        <span class="copyright__text">
+                            &copy; 2025. Todos los derechos reservados a <a href="https://google.com">Missael
+                                Rangel</a>.
+                        </span>
+                    </div>
+                    <div class="footer__links">
+                        <ul class="footer__flinks">
+                            <li class="flinks__item flinks__item--separator"><a href="#" class="flinks__title">Política
+                                    de Privacidad</a></li>
+                            <li class="flinks__item"><a href="#" class="flinks__title">Términos de uso</a></li>
+                        </ul>
+                    </div>
+                </section>
+            </div>
+        </footer>
+    </div>
+</body>
+
+</html>

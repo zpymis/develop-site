@@ -1,0 +1,115 @@
+/* VARIABLES MODO OSCURO*/
+:root {
+  --mx-width: 1320px;
+  --color-text-body: #d3d3d4;
+  --color-primary: #5956e9;
+  --color-secondary: #d3d3d4;
+  --color-banner: #27272e;
+  --color-text-btn: #fff;
+  --color-bg-btn: #2522ba;
+  --color-subtitle: #c75c6f;
+  --color-title: #d3d3d4;
+  --color-bg-services: #27272e;
+  --color-bg-projects: #292930;
+  --color-bg-dark: #27272e;
+  --color-hover-dark: #ffdc60;
+  --color-text-description: #99a1aa;
+  --color-borders: #393940;
+}
+body {
+  background-color: #212121;
+}
+/* Links y navegación */
+.nav__title:hover,
+.menu-mobile__link:hover {
+  color: var(--color-secondary);
+}
+.nav__title::before,
+.menu-mobile__link::before {
+  background-color: var(--color-secondary);
+}
+.nav__submenu {
+  background-color: var(--color-banner);
+}
+.submenu__title:hover,
+.submenu-mobile__link:hover {
+  color: var(--color-secondary);
+}
+.submenu__title::after,
+.submenu-mobile__link::after {
+  background-color: var(--color-secondary);
+}
+/* Banner y botones */
+.banner__btn {
+  background-color: var(--color-primary);
+}
+.menu__navbar--fixed {
+  background-color: var(--color-banner);
+}
+/* Tarjetas y proyectos */
+.services__service {
+  background: var(--color-banner);
+  background-color: var(--color-banner);
+}
+.project__content {
+  background-color: var(--color-banner);
+}
+.project__title:hover {
+  color: var(--color-hover-dark);
+}
+/* Contacto */
+.layout__contact::before {
+  background-color: var(--color-banner);
+}
+.new__more {
+  color: var(--color-text-body);
+}
+.contact__subtitle {
+  color: var(--color-hover-dark);
+}
+.contact__btn {
+  background-color: var(--color-primary);
+}
+/* Footer */
+.fleft__group {
+  background-color: var(--color-banner);
+  box-shadow: none;
+}
+.fleft__form-control {
+  background-color: var(--color-banner);
+  color: var(--color-title);
+}
+.fleft__btn:hover {
+  background-color: var(--color-bg-btn);
+}
+.widget__link:hover {
+  color: var(--color-hover-dark);
+}
+.banner__btn {
+  box-shadow: none;
+}
+.author__name {
+  color: var(--color-secondary);
+}
+.stats__stat:hover {
+  background: linear-gradient(180deg, var(--color-banner), #303035);
+  border: 1px solid #303035;
+}
+.flinks__title:hover {
+  color: var(--color-hover-dark);
+}
+/* MOBILE */
+.menu-mobile {
+  background-color: var(--color-banner);
+}
+.mobile-btn__wrap {
+  background-color: var(--color-border-news);
+}
+.mobile-btn__line {
+  background-color: var(--color-text-btn);
+}
+/* Focus visible en oscuro */
+:focus-visible {
+  outline: 3px solid var(--color-hover-dark);
+  outline-offset: 2px;
+}
